@@ -119,7 +119,9 @@ public class MainActivity extends ListActivity
       // if tag is new, add to and sort tags, then display updated list
       if (!tags.contains(tag))
       {
-         tags.add(tag); // add new tag
+          String urlString = getString(R.string.searchURL) +
+                  Uri.encode(savedSearches.getString(tag, ""), "UTF-8");
+          tags.add(urlString); // add new tag
          Collections.sort(tags, String.CASE_INSENSITIVE_ORDER);
          adapter.notifyDataSetChanged(); // rebind tags to ListView
       }
